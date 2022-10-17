@@ -1,0 +1,96 @@
+﻿@page "/cars"
+@using MudBlazor
+
+<body>
+    <div class="navigationbar"> 
+        <a href="#"> Home </a>  	&nbsp; 	&nbsp; 	&nbsp; &nbsp;
+        <a href="#"> Angesehene Autos </a> 	&nbsp;	&nbsp;	&nbsp; &nbsp;
+        <a href="#"> Kontakt/Impressum </a> 	&nbsp;	&nbsp;	&nbsp; &nbsp;
+        <a href="#"> Anfahrt </a>
+    </div>
+    <div class="wrapper">
+        <div class="card"><OneCar IndexArray="0" /></div>
+        <div class="card"> <OneCar IndexArray="1" /></div>
+        <div class="card"> <OneCar IndexArray="2" /></div>
+        <div class="card"> <OneCar IndexArray="3" /></div>
+    </div>
+    <div class="wrapper">
+        <div class="card"> <OneCar IndexArray="4" /></div>
+        <div class="card"> <OneCar IndexArray="5" /></div>
+        <div class="card"> <OneCar IndexArray="6" /></div>
+        <div class="card"> <OneCar IndexArray="7" /></div>
+    </div>
+</body>
+
+@*<img src="https://media.giphy.com/media/JVGLHEuzbVviw/giphy.gif" alt="funny GIF">
+<img src="https://media.giphy.com/media/SggILpMXO7Xt6/giphy.gif" alt="funny">
+<img src="https://media.giphy.com/media/sr8jYZVVsCmxddga8w/giphy.gif" alt="funny">*@
+
+<style> 
+    .navigationbar{
+        position: relative;
+        top: 20px;
+        display: flex;
+        justify-content: center;
+        font-size: 23px;
+        margin-bottom: 20px;
+    }
+    *{
+        /*box-sizing: border-box;*/
+        padding:0;
+        margin: 0;
+        /*background-color: rgb(96,96,96);*/
+    }
+    .flex,.wrapper{
+        display: flex;
+        justify-content: center;
+        position: relative;
+        top: 15px;
+    }
+    .card{
+        width: 400px;
+        height: 400px;
+        margin:10px;
+        background-color: rgb(96,96,96);   
+    }
+    img{
+        height:360px;
+        width: 100px:
+    }
+    body{
+        overflow: hidden;
+        /*background-color: rgb(96,96,96);*/
+        background-color: red;
+    }
+
+</style>
+
+@*<table> 
+    @while (col % 4 == 0 && c==true)
+    {    
+        <tr>
+            @for (int i=pos;i<Elements.Count;i++)
+            {
+                if (i == Elements.Count - 1)
+                {
+                    c = false;
+                }
+                
+                Console.WriteLine(c);
+                if(col%4==0 && col>0){
+                    row++;
+                    col = 0;
+                    Console.WriteLine("hier");
+                    Console.WriteLine(i);
+                    break;
+                }
+                else{
+                    <th> <img src=@Elements.ElementAt(i)/> </th>
+                }
+                col = col + 1;
+                pos++;
+            }
+        </tr>
+    }
+</table>*@
+

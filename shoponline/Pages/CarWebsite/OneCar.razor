@@ -1,0 +1,78 @@
+﻿@inject NavigationManager NavigationManager
+<figure> 
+    <img src=@imgSources[@IndexArray] @onclick="buttonClicked">
+    <figcaption @onclick="ImageDescriptionClicked" class="imgDescription"> <b>@carNames[@IndexArray]</b></figcaption>
+</figure>
+@if (clicked==true){
+    <a href="/cars/@currentCar" target="_blank"> @currentCar </a>
+    Console.WriteLine(currentCar);
+    NavigationManager.NavigateTo("/cars/" + currentCar);
+    <h2> geklickt</h2>
+    @* @page "/cars/{currentCar}"           
+    <h1> Das ist ein @currentCar</h1>*@
+    @*<button @onclick="@CreateDynamicComponent()"> Submit </button>*@
+    @*@CreateDynamicComponent()*@
+}
+
+<style> 
+    .imgDescription{
+        position: relative;
+        /*top:20px;*/
+        top:10px;
+        display: flex;
+        justify-content:center;
+        font-size: 23px;
+        color: rgb(97,200,239);
+    }
+    img{
+        width: 400px;
+        height: 100px;
+        position: relative;
+        right: 1px;
+        bottom:5px;
+    }
+
+    .imgDescription:hover,img:hover {
+        color: red;
+        cursor: pointer;
+    }
+    
+</style>
+
+@code {
+
+    //[Parameter]
+    //public EventCallback ResetCallback { get; set; }
+    //public async Task onClicked() =>await ResetCallback.InvokeAsync();  
+    [Parameter]
+    public int IndexArray { get; set; }
+    [Parameter]
+    public string currentCar { get; set; }
+    public bool clicked=false;
+
+    string[] imgSources = {
+        "img/bmw.jpg" , "img/citroen.jpg" , "img/ford.jpg" , "img/ferrari.jpg",
+        "img/fiat.jpg" , "img/honda.jpg" , "img/vw.jpg" , "img/porsche.jpg"
+    };
+    string[] carNames = {
+        "BMW" , "Citroen" , "Ford" , "Ferrari",
+        "Fiat" , "Honda" , "VW" , "Porsche"
+    };
+    public void buttonClicked(){
+        currentCar = carNames[IndexArray];
+        clicked = true;
+        switch(IndexArray){
+            case 0: Console.WriteLine("Geklickt: "+ carNames[IndexArray]); break;
+            case 1: Console.WriteLine("Geklickt: " + carNames[IndexArray]); break;
+            case 2: Console.WriteLine("Geklickt: " + carNames[IndexArray]); break;
+            case 3: Console.WriteLine("Geklickt: " + carNames[IndexArray]); break;
+            case 4: Console.WriteLine("Geklickt: " + carNames[IndexArray]); break;
+            case 5: Console.WriteLine("Geklickt: " + carNames[IndexArray]); break;
+            case 6: Console.WriteLine("Geklickt: " + carNames[IndexArray]); break;
+            case 7: Console.WriteLine("Geklickt: " + carNames[IndexArray]); break;
+        }
+    }
+    public void ImageDescriptionClicked(){
+        buttonClicked();
+    }
+}

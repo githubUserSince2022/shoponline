@@ -1,0 +1,90 @@
+﻿@page "/login"
+@using System.Collections.Generic;
+@using System.Net.Mail;
+@using System.IO;
+@using System.Linq;
+@using System.Reflection;
+@inject IJSRuntime JS
+@inject HttpClient Http
+@*@inject Blazored.LocalStorage.ILocalStorageService localStorage*@
+@inject Blazored.LocalStorage.ISyncLocalStorageService localStorage
+
+<style>
+    .demo-card-wide.mdl-card {
+        width: 400px;
+        height: 700px;
+        margin-left: 35%;
+        margin-top: 160px;
+        background-color: #fff;
+        color: black;
+        border: 1px solid;
+    }
+    body{
+        background: white;
+    }
+
+    .mdl-button--colored{
+        margin-left: 10px;
+        width: 90%;
+    }
+
+    .mdl-textfield, .remember {
+        padding-left: 10px;
+        width: 90%;
+    }
+    a{
+        color: blue;
+    }
+
+    #forgotPassword {
+        text-decoration: none;
+        padding-left: 70px;
+        
+    }
+
+    .signIn {
+        display: flex;
+        justify-content:center;
+        padding-top: 50px;
+        font-weight: bold;
+        font-size: 30px;
+    }
+
+    .account, .credentials {
+        display: flex;
+        justify-content: center;
+        padding-top: 30px;
+        font-size: 16px;
+    }
+</style>
+
+<body>
+    <div class="demo-card-wide mdl-card">
+
+        <div class="signIn"> Sign in</div>
+        <div class="credentials"> Login with your Credentials.</div>
+        <div class="account"> Don't have an account? &nbsp; <a href="/register"> Register here</a> </div>
+
+        <form @onsubmit="@validateForm">
+            <div class="mdl-textfield mdl-js-textfield">
+                <input required @bind=@email class="mdl-textfield__input" type="text" placeholder="Email..." id="email">
+            </div>
+            <div class="mdl-textfield mdl-js-textfield">
+                <input required @bind=@password class="mdl-textfield__input" type="password" placeholder="Password..." id="password">
+            </div>
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+                Sign in
+            </button>
+        </form>
+        <br />
+        <span class="remember"> <a id="forgotPassword" href="/forgotPassword" style="position:relative;"> Forgot password? </a></span>
+      
+        <h5 style="background:@colorFehlermeldung;font-size:15px;height:100px;"> @fehlermeldung </h5>
+
+        <br />
+        <div style="padding-left: 25px;font-size:11px;"> FILL ADMINISTRATOR CREDENTIALS</div> <br /> <br />
+        <div style="padding-left: 25px;font-size:11px;"> FILL BASIC CREDENTIALS</div>
+      
+    </div>
+</body>
+

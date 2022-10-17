@@ -1,0 +1,139 @@
+﻿@page "/form-example"
+@inject HttpClient HttpClient
+
+
+<h3 id="Your data">Forms</h3>
+<h4 style="color:red;"> <i> Please fill in all gaps!! </i></h4>
+
+<form id="form">
+    FullName: <input type="text" class="eingaben" @bind="@jobapplication.Fullname"> <br />
+    Description: <input type="text" class="eingaben" @bind="@jobapplication.Description"> <br />
+    SalaryExpectation per Month: <input type="number" class="eingaben" @bind="@jobapplication.SalaryExpectation"> € <br />
+    Avilability: <input type="datetime" class="eingaben" @bind="@jobapplication.Availability"> <br />
+</form>
+
+<button type="submit" id="submit" @onclick="buttonClicked"> Eingaben abschicken </button>
+<button type="submit" id="clear" @onclick="leeren"> Eingaben leeren </button>
+<textarea cols="20" rows="10"> </textarea>
+
+@*<textarea id="textarea"> @Web.Web1.responseBody</textarea>*@
+@*<button type="submit" id="submit1" @onclick="Web.Web1.Main"> Main </button>
+<button type="submit" id="submit2" @onclick="Zeigen"> schreiben </button>*@
+
+@if (jobapplication.buttonClicked1==true){
+    <hr />
+    Console.WriteLine("NAme :" + jobapplication.Fullname);
+    @if(jobapplication.Fullname==null|| jobapplication.Fullname.Length<8){
+        <div class="fehlerEintragen"> Please fill your <b>fullname </b> in </div>
+        return;
+
+    }else{
+        @*<p class="resultJSON"> Your name is:  @jobapplication.Fullname </p>*@
+    }
+    @if(jobapplication.Description==null || jobapplication.Description.Length==0){
+        <div class="fehlerEintragen"> Please fill your <b> description </b> in </div>
+        return;
+       
+    }else{
+        @*<p class="resultJSON"> Your description is:  @jobapplication.Description </p>*@
+    }
+    @if (jobapplication.SalaryExpectation <= 1000 || jobapplication.SalaryExpectation >= 10000 || jobapplication.SalaryExpectation.ToString().Length == 0)
+    {
+        <div class="fehlerEintragen"> Please fill your <b> salaryExpectation </b> in between 1000€ and 10000€ </div>
+        return;
+       
+    }else{
+        @*<p class="resultJSON"> Your salaryExpectation is:  @jobapplication.SalaryExpectation </p>*@
+    }
+    @if ((jobapplication.Availability).Date < DateTime.Now.Date){
+        <div class="fehlerEintragen"> Please fill your <b> availability </b> in </div>
+        return;
+    }
+    else{
+        @*<p class="resultJSON"> Your availability is:  @jobapplication.Availability </p>*@
+    } 
+
+    @if (jobapplication.buttonClicked1==true && jobapplication.Fullname?.Length > 0 && jobapplication.Description.Length > 1
+       && jobapplication.SalaryExpectation > 0 && (jobapplication.Availability).Date >= DateTime.Now.Date)
+    {
+        Console.WriteLine(jobapplication.Fullname.Length);
+        jobapplication.buttonClicked1 = false;
+        buttonWriteJson_Click(@count, jobapplication.Fullname, jobapplication.Description,
+        (int)jobapplication.SalaryExpectation, jobapplication.Availability);
+    }
+    @if (jobsApplications != null)
+    {
+        <br />
+        <p style="color:red;"> Bewerberdaten: </p>
+        @foreach (var j in jobsApplications)
+        {
+            @j
+            <br />
+        }
+    }
+}
+
+@code {
+    public JobApplication jobapplication = new JobApplication();
+    public String responseBody= "";
+    public static int count = 0;
+    private static bool fullnameLeerMachen= false;
+
+    public void buttonClicked(){
+        jobapplication.buttonClicked1 = true;
+    }
+    private static List<JobApplication> jobsApplications = new ();
+    private static string fileName;
+
+    private void leeren(){
+        jobapplication.Fullname = "";
+        jobapplication.Description = "";
+        jobapplication.SalaryExpectation = null;
+        jobapplication.Availability = DateTime.Now;
+    }
+
+
+    private void buttonReadJson_Click(){
+        try{
+            string jsonString = File.ReadAllText(fileName);
+            JobApplication bewerber = JsonSerializer.Deserialize<JobApplication>(jsonString)!;
+
+            if (jobsApplications.Count == 0 || (jobsApplications.Last().Fullname != bewerber.Fullname ||
+            jobsApplications.Last().Description != bewerber.Description || jobsApplications.Last().SalaryExpectation != bewerber.SalaryExpectation
+            || jobsApplications.Last().Availability != bewerber.Availability))
+            {
+                jobsApplications.Add(bewerber);
+                count++;
+            }
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine("\nException Caught!");
+            Console.WriteLine("Message :{0} ", e.Message);
+        }
+
+    }
+    private void buttonWriteJson_Click(int id,string n, string d,int s, DateTime av){
+        try{
+            var bewerber = new JobApplication
+                    {
+                        Id = id,
+                        Fullname = n,
+                        Description = d,
+                        SalaryExpectation = s,
+                        Availability = av
+                };
+
+            fileName = "Colleges.json";
+            string jsonString = JsonSerializer.Serialize(bewerber);
+            File.WriteAllText(fileName, jsonString);
+            buttonReadJson_Click();
+
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("\nException Caught!");
+            Console.WriteLine("Message :{0} ", ex.Message);
+        }
+    }
+}

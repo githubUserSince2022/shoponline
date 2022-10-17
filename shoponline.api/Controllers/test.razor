@@ -1,0 +1,29 @@
+﻿@page "/versuch"
+@using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage;
+@inject ProtectedLocalStorage localStorage
+ 
+<button @onclick="IncrementCount"> Klick me </button>
+
+@code {
+    private int currentCount = 0;
+    private string key= "counterSecure";
+
+    protected override async Task OnAfterRenderAsync(bool firstRender){
+        if(firstRender){
+            try{
+                var result = await localStorage.GetAsync<int>(key);
+                if(result.Success){
+                    currentCount = result.Value;
+                }
+            }
+            catch(Exception ex){
+                currentCount = 0;
+            }
+        }
+    }
+    private async Task IncrementCount(){
+        currentCount++;
+        localStorage.SetAsync(key, currentCount);
+    }
+
+}

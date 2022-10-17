@@ -1,0 +1,56 @@
+﻿@page "/"
+@*@inject IDialogService Dialog*@
+
+@*Damit MudTable erkannt wird muss man folgendes tun*@
+@*cmd cd C:\Users\ALaaraichi\OneDrive - conet.de\Projekte\shoponline\shoponline*@
+@* dotnet add package MudBlazor*@
+@*dann in _imports.razor das hinzufügen:@using MudBlazor *@
+
+<MudTable Items="@_bewerber" Hover="true" Bordered>
+    <HeaderContent>
+        <MudTh> Id </MudTh>
+        <MudTh Style="width:200px;"> Fullname </MudTh>
+        <MudTh Style="width:200px;"> last Job </MudTh>
+        <MudTh Style="width:200px;"> SalaryExpectation </MudTh>
+        <MudTh> Availability </MudTh>
+    </HeaderContent>
+    <RowTemplate>  
+        <MudTd> @context.Id </MudTd>
+        <MudTd> @context.Fullname</MudTd>
+        <MudTd> @context.Description</MudTd>
+        <MudTd> @context.SalaryExpectation €</MudTd>
+        <MudTd> @context.Availability</MudTd>
+    </RowTemplate>
+</MudTable>
+@*<MudButton OnClick="@((e) => OpenDialog(noHeader))" Color="Color.Secondary">No header Dialog</MudButton>*@
+@code {
+    List<JobApplication> _bewerber = new List<JobApplication>();
+    public string[] namen = { "Ayman Laaraichi", "Shannon Fisher", "Taylor Garcia",
+    "Mark West", "Cody Bush","Thomas Bell","Sandra Franco","Anne Lynch","Kelly Mcclain",
+    "Anthony Smith"};
+    public string[] description = { "Informatiker","arbeitslos","Wirtschaftsinformatiker",
+    "BWL-er","Putzkraft", "Pfelgehilfe" , "BetreuerIn","KassierIn","LehrerIn","Botaniker"};
+    //DialogOptions noHeader = new DialogOptions() { NoHeader = true };
+    protected override async Task OnInitializedAsync(){
+        var random = new Random();
+
+        for (int i = 0; i < 10; i++){
+            _bewerber.Add(new JobApplication() {
+                    Id = i,
+                    Fullname = namen[i],
+                    Description = description[i],
+                    SalaryExpectation = (int)random.Next(30000, 60000),  
+                    Availability = DateTime.Now.AddDays(random.Next(365)).AddMinutes(random.Next(1440)).AddSeconds(random.Next(60))
+
+            });
+            int hour = _bewerber[i].Availability.Hour;
+            //int seconds = _bewerber[i].Availability.Second;
+            while (hour <8 || hour > 16 /*|| seconds!=0*/){
+                _bewerber[i].Availability = DateTime.Now.AddDays(random.Next(365)).AddMinutes(random.Next(200));
+                hour = _bewerber[i].Availability.Hour;
+                //seconds = _bewerber[i].Availability.Second;
+            }
+       
+        }
+    }
+}

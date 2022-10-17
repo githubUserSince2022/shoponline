@@ -1,0 +1,111 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = false
+build_property.PlatformNeutralAssembly = 
+build_property._SupportedPlatformList = browser
+build_property.EnableSingleFileAnalyzer = 
+build_property.EnableTrimAnalyzer = true
+build_property.IncludeAllContentForSelfExtract = 
+build_property.RootNamespace = shoponline
+build_property.RootNamespace = shoponline
+build_property.ProjectDir = c:\Users\ALaaraichi\OneDrive - conet.de\Projekte\shoponline\shoponline\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = c:\Users\ALaaraichi\OneDrive - conet.de\Projekte\shoponline\shoponline
+build_property._RazorSourceGeneratorDebug = 
+
+[c:/Users/ALaaraichi/OneDrive - conet.de/Projekte/shoponline/shoponline/App.razor]
+build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/ALaaraichi/OneDrive - conet.de/Projekte/shoponline/shoponline/Pages/CarWebsite/CarPages/BMW.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2FyV2Vic2l0ZVxDYXJQYWdlc1xCTVcucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/ALaaraichi/OneDrive - conet.de/Projekte/shoponline/shoponline/Pages/CarWebsite/CarPages/Citroen.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2FyV2Vic2l0ZVxDYXJQYWdlc1xDaXRyb2VuLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/ALaaraichi/OneDrive - conet.de/Projekte/shoponline/shoponline/Pages/CarWebsite/CarPages/Ferrari.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2FyV2Vic2l0ZVxDYXJQYWdlc1xGZXJyYXJpLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/ALaaraichi/OneDrive - conet.de/Projekte/shoponline/shoponline/Pages/CarWebsite/CarPages/Fiat.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2FyV2Vic2l0ZVxDYXJQYWdlc1xGaWF0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/ALaaraichi/OneDrive - conet.de/Projekte/shoponline/shoponline/Pages/CarWebsite/CarPages/Ford.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2FyV2Vic2l0ZVxDYXJQYWdlc1xGb3JkLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/ALaaraichi/OneDrive - conet.de/Projekte/shoponline/shoponline/Pages/CarWebsite/CarPages/Honda.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2FyV2Vic2l0ZVxDYXJQYWdlc1xIb25kYS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/ALaaraichi/OneDrive - conet.de/Projekte/shoponline/shoponline/Pages/CarWebsite/CarPages/Porsche.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2FyV2Vic2l0ZVxDYXJQYWdlc1xQb3JzY2hlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/ALaaraichi/OneDrive - conet.de/Projekte/shoponline/shoponline/Pages/CarWebsite/CarPages/VW.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2FyV2Vic2l0ZVxDYXJQYWdlc1xWVy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/ALaaraichi/OneDrive - conet.de/Projekte/shoponline/shoponline/Pages/CarWebsite/Cars.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2FyV2Vic2l0ZVxDYXJzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/ALaaraichi/OneDrive - conet.de/Projekte/shoponline/shoponline/Pages/CarWebsite/OneCar.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2FyV2Vic2l0ZVxPbmVDYXIucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/ALaaraichi/OneDrive - conet.de/Projekte/shoponline/shoponline/Pages/FormExample.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRm9ybUV4YW1wbGUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/ALaaraichi/OneDrive - conet.de/Projekte/shoponline/shoponline/Pages/LoginPages/ForgotPassword.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9naW5QYWdlc1xGb3Jnb3RQYXNzd29yZC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/ALaaraichi/OneDrive - conet.de/Projekte/shoponline/shoponline/Pages/LoginPages/Login.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9naW5QYWdlc1xMb2dpbi5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/ALaaraichi/OneDrive - conet.de/Projekte/shoponline/shoponline/Pages/LoginPages/LoginNewPassword.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9naW5QYWdlc1xMb2dpbk5ld1Bhc3N3b3JkLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/ALaaraichi/OneDrive - conet.de/Projekte/shoponline/shoponline/Pages/LoginPages/Register.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9naW5QYWdlc1xSZWdpc3Rlci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/ALaaraichi/OneDrive - conet.de/Projekte/shoponline/shoponline/Pages/Mudtable.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTXVkdGFibGUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/ALaaraichi/OneDrive - conet.de/Projekte/shoponline/shoponline/Pages/Test.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVGVzdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/ALaaraichi/OneDrive - conet.de/Projekte/shoponline/shoponline/Pages/Web.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcV2ViLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/ALaaraichi/OneDrive - conet.de/Projekte/shoponline/shoponline/Shared/SurveyPrompt.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFN1cnZleVByb21wdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/ALaaraichi/OneDrive - conet.de/Projekte/shoponline/shoponline/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/ALaaraichi/OneDrive - conet.de/Projekte/shoponline/shoponline/Shared/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1haW5MYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-m5wuqvte0z
+
+[c:/Users/ALaaraichi/OneDrive - conet.de/Projekte/shoponline/shoponline/Shared/NavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE5hdk1lbnUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-4okrwwlc7j

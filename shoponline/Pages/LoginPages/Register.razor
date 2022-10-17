@@ -1,0 +1,136 @@
+﻿@page "/register"
+@using System.Collections.Generic;
+@using System.Net.Mail;
+@using System.IO;
+@using System.Linq;
+@using System.Reflection;
+@inject IJSRuntime JS
+@inject HttpClient Http
+@*@inject Blazored.LocalStorage.ILocalStorageService localStorage*@
+@inject Blazored.LocalStorage.ISyncLocalStorageService localStorage
+
+<style>
+    .demo-card-wide.mdl-card {
+        width: 400px;
+        height: 700px;
+        margin-left: 35%;
+        margin-top: 160px;
+        background-color: #fff;
+        color: black;
+        border: 1px solid;
+    }
+
+    .mdl-textfield:hover .tooltiptext {
+        visibility: visible;
+    }
+
+    .mdl-textfield .tooltiptext{
+        width: 150px;
+        background-color: yellow;
+        color: black;
+        text-align: center;
+        visibility: hidden;
+        border-radius: 6px;
+        font-size:10px;
+        position: absolute;
+        z-index: 1;    
+    }
+    .zeichenPassword{
+         color:@zeichenPassword
+    }
+    .großPassword{
+        color:@großPassword
+    }
+    .kleinPassword{
+        color:@kleinPassword
+    }
+    .zahlPassword{
+        color:@zahlPassword
+    }
+    .sonderZeichenPassword{
+        color:@sonderZeichenPassword
+    }
+
+    body {
+        background: white;
+    }
+
+    .mdl-button--colored {
+        margin-left: 10px;
+        width: 90%;
+    }
+
+    .mdl-textfield, .remember {
+        padding-left: 10px;
+        width: 90%;
+    }
+
+    a {
+        color: blue;
+        text-decoration: none;
+    }
+    .signIn {
+        display: flex;
+        justify-content: center;
+        padding-top: 50px;
+        font-weight: bold;
+        font-size: 30px;
+    }
+
+    .account, .credentials {
+        display: flex;
+        justify-content: center;
+        padding-top: 30px;
+        font-size: 16px;
+    }
+</style>
+
+<body>
+    <div class="demo-card-wide mdl-card">
+
+        <div class="signIn"> Register</div>
+        <div class="account"> Already have an account? &nbsp; <a href="/login"> Sign in</a> </div>
+        <br />
+
+        <form @onsubmit="@validateForm">
+            <div class="mdl-textfield mdl-js-textfield">
+                <input required class="mdl-textfield__input" type="text" placeholder="User Name ..." id="userName" @bind=@userName>
+            </div>
+            <div class="mdl-textfield mdl-js-textfield">
+                <input required class="mdl-textfield__input" type="text" placeholder="First Name ..." id="firstName" @bind=@firstName>
+            </div>
+            <div class="mdl-textfield mdl-js-textfield">
+                <input required class="mdl-textfield__input" type="text" placeholder="Last Name ..." id="lastName" @bind=@lastName>
+            </div>
+            <div class="mdl-textfield mdl-js-textfield">
+                <input required class="mdl-textfield__input" type="email" placeholder="E-Mail ..." id="email" @bind=@email>
+            </div>
+            <div class="mdl-textfield mdl-js-textfield">
+                <input @onkeypress="@eingabePassWordInput" required class="mdl-textfield__input" type="password" minlength="8" placeholder="Password ..." id="password" @bind=@password @bind:event="oninput">
+                <p class="tooltiptext">
+                    <span class="zeichenPassword"> Mindestens 8 Zeichen ! </span> 
+                    <span class="großPassword"> Mindestens 1 Großbuchstabe ! </span>
+                    <span class="sonderZeichenPassword"> Mindestens 1 Sonderzeichen !</span>
+                    <span class="zahlPassword"> Mindestens 1 Zahl ! <br /> </span>
+                    <span class="kleinPassword"> Mindestens 1 KleinBuchstabe !</span>
+                </p>
+            </div>
+            <div class="mdl-textfield mdl-js-textfield">
+                <input @onkeypress="@eingabePassWordInput" required class="mdl-textfield__input" type="password" minlength="8" placeholder="Confirm password..." id="confirmPassword" @bind=@confirmPassword>
+                <p class="tooltiptext">
+                    <span class="zeichenPassword"> Mindestens 8 Zeichen ! </span>
+                    <span class="großPassword"> Mindestens 1 Großbuchstabe ! </span>
+                    <span class="sonderZeichenPassword"> Mindestens 1 Sonderzeichen !</span>
+                    <span class="zahlPassword"> Mindestens 1 Zahl ! <br /> </span>
+                    <span class="kleinPassword"> Mindestens 1 KleinBuchstabe !</span>
+                </p>
+            </div>
+            <br>
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+                Register
+            </button> <br /> <br />
+            <h5 style="background:@colorFehlermeldung;font-size:15px;height:100px;"> @fehlermeldung </h5>
+        </form>   
+       
+    </div>
+</body>

@@ -1,0 +1,74 @@
+﻿@* Lädt string aus einer Website/Json-Datei und zeigt die Daten an*@
+@page "/web"
+@inject HttpClient HttpClient
+
+<div>
+    <h5>Simple GET Request</h5>
+    <button @onclick="@Web1.Main"> Get Data from Browser</button>
+    <button @onclick="@Zeigen"> Get Data from JSON-File</button>
+    <div>
+        Total users <br /> @Web1.responseBody
+    </div>
+</div>
+
+<br />
+@if (jobsApplications!=null){
+    <p> Bewerberdaten: </p>
+    @foreach (var j in jobsApplications) {
+        @*<p> Id: @j.Id</p>
+        <p> Fullname: @j.Fullname</p>
+        <p> Description: @j.Description</p>
+        <p> SalaryExpectation: @j.SalaryExpectation</p>
+        <p> Availability: @j.Availability</p>*@
+        @j
+        <br />
+        
+    }
+}
+
+@code {
+    public JobApplication[] jobsApplications;
+
+    //protected override async Task OnInitializedAsync()
+    //{
+
+    //}
+    public async Task Zeigen(){
+        try
+        {
+            jobsApplications = await HttpClient.GetFromJsonAsync<JobApplication[]>("sample-data/Daten.json");
+        }
+        catch (Exception e){
+            Console.WriteLine("\nException Caught!");
+            Console.WriteLine("Message :{0} ", e.Message);
+        }
+    } 
+    public class Web1{
+        static readonly HttpClient client = new HttpClient();
+        public static String responseBody;
+
+        public static async Task Main()
+        {
+            try
+            {
+                HttpResponseMessage response = await client.GetAsync("https://reqres.in/api/users");
+                response.EnsureSuccessStatusCode();
+            }
+            catch (HttpRequestException e)
+            {
+                Console.WriteLine("\nException Caught!");
+                Console.WriteLine("Message :{0} ", e.Message);
+            }
+            finally
+            {
+                if (responseBody == null || responseBody.Length == 0)
+                {
+                    responseBody = " Fehler nichts auf der Website gefunden";
+                }
+            }
+        }
+    }
+    
+}
+    
+    
